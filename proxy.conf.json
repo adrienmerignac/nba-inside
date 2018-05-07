@@ -1,0 +1,18 @@
+{
+    "/nba": {
+      "target": "http://data.nba.net",
+      "secure": true,
+      "pathRewrite": {
+        "^/nba": ""
+      },
+      "changeOrigin": true
+    },
+    "/roster": {
+      "target": "http://stats.nba.com",
+      "secure": true,
+      "pathRewrite": {
+        "^/roster": ""
+      },
+      "changeOrigin": true
+    }
+  }

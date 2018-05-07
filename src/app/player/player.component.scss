@@ -1,0 +1,44 @@
+.main {
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+mat-card {
+    color: #FDFEFE;
+    height: 655px; //Or any other height you wish
+    overflow-x: scroll;
+    overflow-y: auto;
+    margin-top: 0;
+    background: rgba(17, 14, 14, 0.342);
+    cursor: pointer;
+}
+
+.title {
+    margin: 0;
+    display: inline-flex;
+}
+
+h1 {
+    padding-top: .8em;
+    padding-left: .8em;
+}
+
+h2 {
+    padding-top: 1em;
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(187, 184, 184, 0.692);
+}
+
+tr:hover {
+    background-color: #c7c1c14b;
+}

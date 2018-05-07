@@ -1,0 +1,78 @@
+.main {
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+mat-card {
+    color: #FDFEFE;
+    height: 655px; //Or any other height you wish
+    overflow-x: scroll;
+    overflow-y: auto;
+    margin-top: 0;
+    background: rgba(17, 14, 14, 0.411);
+    cursor: pointer;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    transition: transform .45s;
+    display: inline-flex;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.3);
+    }
+}
+
+h1 {
+    padding-top: .8em;
+    padding-left: 1em;
+}
+
+.title {
+    margin: 0;
+    display: inline-flex;
+}
+
+h2 {
+    padding-top: 1em;
+    padding-bottom: .6em;
+    text-decoration: underline;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(187, 184, 184, 0.692);
+}
+
+tr:hover {
+    background-color: #c7c1c14b;
+}
+
+a {
+    color: #FDFEFE;
+}
+
+.background {
+    margin-top: 2em;
+}
+
+.playerLink {
+    width: 100%;
+    height: 100%;
+}
+
+.detail {
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+
+h3 {
+    margin-top: 0;
+}

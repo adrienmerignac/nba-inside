@@ -1,0 +1,45 @@
+<ng-container>
+  <div class="main">
+    <mat-card>
+      <mat-card-title>
+        <h2 class="title">
+          Conférence Est
+        </h2>
+      </mat-card-title>
+      <mat-card-content>
+        <span *ngFor="let team of team.league.standard">
+          <span *ngIf="team.isNBAFranchise == true">
+            <span *ngIf="team.confName == 'East'">
+              <a href="teamdetails/{{ team.teamId }}">
+                <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" 
+                alt="{{ team.city }}" title="{{ team.altCityName }}" onclick="goToTeamDetail(team.teamId)">
+              </a>
+            </span>
+          </span>
+        </span>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>
+<ng-container>
+  <div class="main">
+    <mat-card>
+      <mat-card-title>
+        <h2 class="title">
+          Conférence Ouest
+        </h2>
+      </mat-card-title>
+      <mat-card-content>
+        <span *ngFor="let team of team.league.standard">
+          <span *ngIf="team.isNBAFranchise == true">
+            <span *ngIf="team.confName == 'West'">
+              <a href="teamdetails/{{ team.teamId }}" title="{{ team.altCityName }}">
+                <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{team.tricode}}_logo.svg" alt="{{ team.city }}">
+              </a>
+            </span>
+          </span>
+        </span>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>

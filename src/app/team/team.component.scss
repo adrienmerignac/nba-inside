@@ -1,0 +1,29 @@
+.main {
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+mat-card {
+    margin-top: 0;
+    background: rgba(17, 14, 14, 0.411);
+    cursor: pointer;
+}
+
+.title {
+    color: #FDFEFE;
+    text-align: center;
+    margin: 0;
+}
+
+.logo {
+    width: 90px;
+    height: 90px;
+    margin-left: 5em;
+    margin-top: 2em;
+    transition: transform .45s;
+    display: inline-flex;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.5);
+    }
+}
