@@ -1,7 +1,7 @@
 <ng-container>
   <mat-tab-group>
-    <mat-tab label="NbaTeams">
-      <div class="main">
+    <mat-tab label="NbaTeams" style="color: #FDFEFE">
+      <div>
         <mat-card>
           <mat-card-title>
             <h2 class="title">
@@ -55,13 +55,15 @@
           <mat-card-content>
             <mat-list>
               <mat-list-item *ngFor="let players of players.league.standard">
-                <img matListAvatar role="playerimage" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ players.teamId }}/2017/260x190/{{ players.personId }}.png"
+                <div class="matlistitems">
+                <img class="playerimage" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ players.teamId }}/2017/260x190/{{ players.personId }}.png"
                   alt="{{ players.firstName }} {{ players.lastName }}" title="{{ players.firstName }} {{ players.lastName }}">
-                <p matLine>
+                <p class="matline">
                   <a class="playerscontent" href="player/{{ players.teamId }}/{{ players.personId }}">
                     <span> {{ players.firstName }} {{ players.lastName }}</span>
                   </a>
                 </p>
+              </div>
               </mat-list-item>
             </mat-list>
           </mat-card-content>

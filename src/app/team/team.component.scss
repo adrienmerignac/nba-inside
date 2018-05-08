@@ -1,6 +1,5 @@
 .main {
-    width: 100%;
-    margin-top: 0.5em;
+    margin-top: 1em;
 }
 
 mat-card {
@@ -35,8 +34,8 @@ a {
     width: 90px;
     height: 90px;
     margin-left: 5em;
-    margin-top: 1em;
-    transition: transform .45s;
+    margin-top: 1.3em;
+    transition: transform .3s;
     display: inline-flex;
     cursor: pointer;
     &:hover {
@@ -44,27 +43,41 @@ a {
     }
 }
 
-h1 {
-    margin: 0;
-}
-
 .playercard {
     height: 655px; //Or any other height you wish
     overflow-x: scroll;
 }
 
-.playerscontent {
-    font-size: 20px;
-}
-
-.playerimage {
-    height: 150px;
-    width: 150px;
+h1 {
+    margin: 0;
+    padding-left: .5em;
+    text-decoration: underline;
 }
 
 mat-list-item {
     &:hover {
         background-color: #c7c1c14b;
     }
-    padding: 1em;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    padding-left: 0;
+    border-bottom: 1px solid #FDFEFE;
+}
+
+.matlistitems {
+    display: inline-flex;
+}
+
+.playerimage {
+    height: 78px;
+    width: 110px;
+}
+
+.matline {
+    margin-top: 1.3em;
+    margin-left: 1em;
+}
+
+.playerscontent {
+    font-size: 25px;
 }
