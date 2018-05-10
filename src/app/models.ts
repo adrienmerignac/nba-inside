@@ -169,7 +169,7 @@ export interface League {
     standard: AllPlayers[];
 }
 
-export interface RootObject {
+export interface AllPlayersRoot {
     _internal: Internal;
     league: League;
 }

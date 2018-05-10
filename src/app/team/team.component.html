@@ -1,6 +1,6 @@
 <ng-container>
   <mat-tab-group>
-    <mat-tab label="NbaTeams" style="color: #FDFEFE">
+    <mat-tab label="NbaTeams" color>
       <div>
         <mat-card>
           <mat-card-title>
@@ -13,8 +13,11 @@
               <span *ngIf="team.isNBAFranchise == true">
                 <span *ngIf="team.confName == 'East'">
                   <a href="teamdetails/{{ team.teamId }}">
-                    <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" alt="{{ team.city }}"
-                      title="{{ team.altCityName }}" onclick="goToTeamDetail(team.teamId)">
+                    <img class="logo" 
+                      src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" 
+                      alt="{{ team.city }}"
+                      title="{{ team.altCityName }}" 
+                      onclick="goToTeamDetail(team.teamId)">
                   </a>
                 </span>
               </span>
@@ -35,8 +38,11 @@
                 <span *ngIf="team.isNBAFranchise == true">
                   <span *ngIf="team.confName == 'West'">
                     <a href="teamdetails/{{ team.teamId }}" title="{{ team.altCityName }}">
-                      <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" alt="{{ team.city }}"
-                        title="{{ team.altCityName }}" onclick="goToTeamDetail(team.teamId)">
+                      <img class="logo" 
+                        src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" 
+                        alt="{{ team.city }}"
+                        title="{{ team.altCityName }}" 
+                        onclick="goToTeamDetail(team.teamId)">
                     </a>
                   </span>
                 </span>
@@ -54,15 +60,22 @@
           </mat-card-title>
           <mat-card-content>
             <mat-list>
+                <mat-paginator [length]="3"
+                  [pageSize]="3"
+                  [pageSizeOptions]="[3, 5, 10]"
+                  (page)="pageEvent = $event">
+                </mat-paginator>
               <mat-list-item *ngFor="let players of players.league.standard">
                 <div class="matlistitems">
-                <img class="playerimage" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ players.teamId }}/2017/260x190/{{ players.personId }}.png"
-                  alt="{{ players.firstName }} {{ players.lastName }}" title="{{ players.firstName }} {{ players.lastName }}">
-                <p class="matline">
-                  <a class="playerscontent" href="player/{{ players.teamId }}/{{ players.personId }}">
-                    <span> {{ players.firstName }} {{ players.lastName }}</span>
-                  </a>
-                </p>
+                  <img class="playerimage" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ players.teamId }}/2017/260x190/{{ players.personId }}.png"
+                    alt="{{ players.firstName }} {{ players.lastName }}" title="{{ players.firstName }} {{ players.lastName }}">
+                  <p class="matline">
+                    <a class="playerscontent" href="player/{{ players.teamId }}/{{ players.personId }}">
+                      <span> 
+                        {{ players.firstName }} {{ players.lastName }}
+                      </span>
+                    </a>
+                  </p>
               </div>
               </mat-list-item>
             </mat-list>
