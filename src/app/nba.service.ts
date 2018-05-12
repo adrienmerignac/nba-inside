@@ -1,4 +1,4 @@
-import { Team, Detail, AllPlayers, Latest, Bio } from './models';
+import { TeamsResponse, PlayerResponse, TeamDetailResponse, PlayerProfileResponse, Detail } from './models';
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,13 +13,13 @@ export class NbaService {
   constructor(private http: HttpClient) { }
 
   // Liste de toutes les équipes Américaines -- team component
-  public getTeams(year: number): Observable<Team> {
-    return this.http.get<Team>(`/nba/prod/v1/${year}/teams.json`);
+  public getAllTeams(year: number): Observable<TeamsResponse> {
+    return this.http.get<TeamsResponse>(`/nba/prod/v1/${year}/teams.json`);
   }
 
   // Liste de tous les joueurs de la NBA -- teamdetail component
-  public getTeamRoster(year: number): Observable<AllPlayers> {
-    return this.http.get<AllPlayers>(`/nba/prod/v1/${year}/players.json`);
+  public getAllPlayers(year: number): Observable<PlayerResponse> {
+    return this.http.get<PlayerResponse>(`/nba/prod/v1/${year}/players.json`);
   }
 
   // Requête pour avoir le détail d'une équipe -- teamdetail component

@@ -1,4 +1,4 @@
-import { AllPlayers } from './../models';
+import { TeamsResponse, Standard, PlayerResponse } from './../models';
 import { Team } from '../models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -12,21 +12,32 @@ import { NbaService } from './../nba.service';
 })
 export class TeamComponent implements OnInit {
 
-  team: Team;
-  players: AllPlayers;
+  westTeams: Standard[];
+  eastTeams: Standard[];
+  playersList: Standard[];
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
     this.route.params.subscribe(res => {
       console.log(res.year);
 
-      this.nbaService.getTeams(2017).subscribe(results => {
-        console.log('team', results);
-        this.team = results;
+      this.nbaService.getAllTeams(2017).subscribe(data => {
+        console.log('teams', data);
+        const teams = data.league.standard;
+        this.eastTeams = teams.filter(team => team.isNBAFranchise === true && team.confName === 'East');
+        this.westTeams = teams.filter(team => team.isNBAFranchise === true && team.confName === 'West');
       });
 
-      this.nbaService.getTeamRoster(2017).subscribe(results => {
-        console.log('players', results);
-        this.players = results;
+      this.nbaService.getAllPlayers(2017).subscribe(data => {
+        console.log('players', data);
+        const players = data.league.standard;
+        this.playersList = players.filter(
+          player => player.heightMeters !== ''
+          && player.draft.pickNum !== '' && player.firstName !== 'Wade' && player.firstName !== 'MarShon'
+          && player.firstName !== 'Markel' && player.firstName !== 'Gerald' && player.firstName !== 'RJ'
+          && player.firstName !== 'Demetrius' && player.lastName !== 'Lawson' && player.firstName !== 'Georges'
+          && player.firstName !== 'Georgios' && player.firstName !== 'Malachi' && player.firstName !== 'Derrick'
+          && player.firstName !== 'Ramon' && player.firstName !== 'Marquis' && player.firstName !== 'Markieff'
+        );
       });
     });
   }

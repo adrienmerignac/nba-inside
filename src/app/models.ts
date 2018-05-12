@@ -1,52 +1,85 @@
-// Nba Teams
+// All Nba Teams
 
-export interface SeasonMeta {
-    calendar_date: number;
-    season_year: number;
-    stats_season_year: number;
-    stats_season_id: number;
-    stats_season_stage: number;
-    roster_season_year: number;
-    schedule_season_year: number;
-    standings_season_year: number;
-    season_id: number;
-    display_year: string;
-    display_season: string;
-    season_stage: number;
+export interface Internal {
+    pubDateTime: string;
+    xslt: string;
+    eventName: string;
 }
 
-export interface Next {
-    url: string;
+export interface Standard {
+    isNBAFranchise: boolean;
+    isAllStar: boolean;
+    city: string;
+    altCityName: string;
+    fullName: string;
+    tricode: string;
+    teamId: string;
+    nickname: string;
+    urlName: string;
+    confName: string;
+    divName: string;
 }
 
-export interface SportsMeta {
-    date_time: string;
-    season_meta: SeasonMeta;
-    next: Next;
+export interface League {
+    standard: Standard[];
+}
+
+export interface TeamsResponse {
+    _internal: Internal;
+    league: League;
+}
+
+// All Nba Players
+
+export interface Internal {
+    pubDateTime: string;
+    xslt: string;
+    eventName: string;
 }
 
 export interface Team {
-    is_nba_team: boolean;
-    team_name: string;
-    team_nickname: string;
-    team_code: string;
-    team_abbrev: string;
-    city: string;
-    state: string;
-    team_short_name: string;
-    team_id: number;
-    conference: string;
-    division_id: string;
+    teamId: string;
+    seasonStart: string;
+    seasonEnd: string;
 }
 
-export interface Teams {
-    season_year: number;
-    team: Team[];
+export interface Draft {
+    teamId: string;
+    pickNum: string;
+    roundNum: string;
+    seasonYear: string;
 }
 
-export interface SportsContent {
-    sports_meta: SportsMeta;
-    teams: Teams;
+export interface Standard {
+    firstName: string;
+    lastName: string;
+    personId: string;
+    teamId: string;
+    jersey: string;
+    isActive: boolean;
+    pos: string;
+    heightFeet: string;
+    heightInches: string;
+    heightMeters: string;
+    weightPounds: string;
+    weightKilograms: string;
+    dateOfBirthUTC: string;
+    teams: Team[];
+    draft: Draft;
+    nbaDebutYear: string;
+    yearsPro: string;
+    collegeName: string;
+    lastAffiliation: string;
+    country: string;
+}
+
+export interface League {
+    standard: Standard[];
+}
+
+export interface PlayerResponse {
+    _internal: Internal;
+    league: League;
 }
 
 // Nba Team Details
@@ -127,54 +160,17 @@ export interface TeamDetail {
     RetiredMembers: RetiredMember[];
 }
 
-// Team Roster
+export interface TeamDetailResponse {
+    TeamDetails: TeamDetail[];
+}
+
+// Player Profile
 
 export interface Internal {
     pubDateTime: string;
     xslt: string;
     eventName: string;
 }
-
-export interface Draft {
-    teamId: string;
-    pickNum: string;
-    roundNum: string;
-    seasonYear: string;
-}
-
-export interface AllPlayers {
-    firstName: string;
-    lastName: string;
-    personId: string;
-    teamId: string;
-    jersey: string;
-    isActive: boolean;
-    pos: string;
-    heightFeet: string;
-    heightInches: string;
-    heightMeters: string;
-    weightPounds: string;
-    weightKilograms: string;
-    dateOfBirthUTC: string;
-    teams: Team[];
-    draft: Draft;
-    nbaDebutYear: string;
-    yearsPro: string;
-    collegeName: string;
-    lastAffiliation: string;
-    country: string;
-}
-
-export interface League {
-    standard: AllPlayers[];
-}
-
-export interface AllPlayersRoot {
-    _internal: Internal;
-    league: League;
-}
-
-// Player Profile
 
 export interface Latest {
     seasonYear: number;
@@ -336,10 +332,10 @@ export interface Standard {
 }
 
 export interface League {
-    standard: AllPlayers[];
+    standards: Standard;
 }
 
-export interface RootObject {
+export interface PlayerProfileResponse {
     _internal: Internal;
     league: League;
 }

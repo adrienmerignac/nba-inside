@@ -1,4 +1,4 @@
-import { Bio } from './../models';
+import { Bio, PlayerProfileResponse } from './../models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -24,9 +24,10 @@ export class PlayerComponent implements OnInit {
       this.playerTeamId = res.teamid;
       this.playerProfileId = res.id;
 
-      this.nbaService.getPlayerProfile(2017, res.id).subscribe(results => {
-        console.log('player', results);
-        this.player = results;
+      this.nbaService.getPlayerProfile(2017, res.id).subscribe(data => {
+        console.log('player', data);
+        this.player = data;
+        // const players = data.league.standards.stats.regularSeason.season;
       });
 
       this.nbaService.getPlayerBio(res.id).subscribe(results => {

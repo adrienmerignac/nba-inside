@@ -1,4 +1,4 @@
-import { AllPlayers, Detail } from './../models';
+import { Detail, PlayerResponse, TeamDetailResponse, Standard, TeamDetail } from './../models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -12,20 +12,24 @@ import { NbaService } from './../nba.service';
 export class TeamdetailsComponent implements OnInit {
 
   teamDetail: Detail;
-  teamRoster: AllPlayers;
+  teamRostersPlayers: Standard[];
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
     this.route.params.subscribe(res => {
       console.log(res.id);
 
-      this.nbaService.getTeamDetail(res.id).subscribe(results => {
-        console.log('teamDetails', results);
-        this.teamDetail = results;
+      this.nbaService.getTeamDetail(res.id).subscribe(data => {
+        console.log('teamDetail', data);
+        this.teamDetail = data;
+        // const teamDetails = data.TeamDetails;
       });
 
-      this.nbaService.getTeamRoster(2017).subscribe(results => {
-        console.log('teamRosters', results);
-        this.teamRoster = results;
+      this.nbaService.getAllPlayers(2017).subscribe(data => {
+        console.log('teamRostersPlayers', data);
+        const players = data.league.standard;
+        this.teamRostersPlayers = players.filter(player => player.teamId);
+        // const teamRosters = data.league.standard;
+        // this.teamRostersPlayers = teamRosters.filter(player => player.teamId);
       });
     });
   }
