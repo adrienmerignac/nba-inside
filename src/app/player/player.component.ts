@@ -1,8 +1,10 @@
-import { Bio, PlayerProfileResponse } from './../models';
+import { Season } from './../models/playerdetails';
+import { Bio } from './../models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { NbaService } from './../nba.service';
+import { PlayerProfileResponse } from '../models/playerdetails';
 
 @Component({
   selector: 'app-player',
@@ -11,7 +13,7 @@ import { NbaService } from './../nba.service';
 })
 export class PlayerComponent implements OnInit {
 
-  player: any;
+  seasons: Season[];
   bio: any;
   playerProfileId;
   playerTeamId;
@@ -26,13 +28,21 @@ export class PlayerComponent implements OnInit {
 
       this.nbaService.getPlayerProfile(2017, res.id).subscribe(data => {
         console.log('player', data);
-        this.player = data;
-        // const players = data.league.standards.stats.regularSeason.season;
+        const seasonsData = data.league.standard.stats.regularSeason.season;
+        this.seasons = seasonsData;
+        this.seasons = seasonsData.map(
+          season => {
+            return {
+              ...season,
+              teams: season.teams.filter(team => team.ppg !== '-1')
+            };
+          }
+        );
       });
 
-      this.nbaService.getPlayerBio(res.id).subscribe(results => {
-        console.log('bio', results);
-        this.bio = results;
+      this.nbaService.getPlayerBio(res.id).subscribe(data => {
+        console.log('bio', data);
+        this.bio = data;
       });
     });
   }

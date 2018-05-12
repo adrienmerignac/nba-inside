@@ -1,4 +1,4 @@
-<ng-container>
+<ng-container *ngIf="seasons && bio">
   <div class="main">
     <mat-card>
       <mat-card-title>
@@ -29,19 +29,19 @@
                 <th>FTP</th>
               </tr>
             </thead>
-            <tbody *ngFor="let player of player.league.standard.stats.regularSeason.season">
-              <tr *ngFor="let stat of player.teams">
-                <td>{{ player.seasonYear }}</td>
-                <td>{{ stat.ppg }}</td>
-                <td>{{ stat.rpg }}</td>
-                <td>{{ stat.apg }}</td>
-                <td>{{ stat.mpg }}</td>
-                <td>{{ stat.topg }}</td>
-                <td>{{ stat.spg }}</td>
-                <td>{{ stat.bpg }}</td>
-                <td>{{ stat.fgp }}%</td>
-                <td>{{ stat.tpp }}%</td>
-                <td>{{ stat.ftp }}%</td>
+            <tbody *ngFor="let season of seasons">
+              <tr *ngFor="let team of season.teams">
+                <td>{{ season.seasonYear }}</td>
+                <td>{{ team.ppg }}</td>
+                <td>{{ team.rpg }}</td>
+                <td>{{ team.apg }}</td>
+                <td>{{ team.mpg }}</td>
+                <td>{{ team.topg }}</td>
+                <td>{{ team.spg }}</td>
+                <td>{{ team.bpg }}</td>
+                <td>{{ team.fgp }}%</td>
+                <td>{{ team.tpp }}%</td>
+                <td>{{ team.ftp }}%</td>
               </tr>
             </tbody>
           </table>
@@ -64,19 +64,19 @@
                 <th>plusMinus</th>
               </tr>
             </thead>
-            <tbody *ngFor="let player of player.league.standard.stats.regularSeason.season">
-              <tr *ngFor="let stat of player.teams">
-                <td>{{ player.seasonYear }}</td>
-                <td>{{ stat.points }}</td>
-                <td>{{ stat.assists }}</td>
-                <td>{{ stat.totReb }}</td>
-                <td>{{ stat.blocks }}</td>
-                <td>{{ stat.steals }}</td>
-                <td>{{ stat.turnovers }}</td>
-                <td>{{ stat.offReb }}</td>
-                <td>{{ stat.defReb }}</td>
-                <td>{{ stat.gamesPlayed }}</td>
-                <td>{{ stat.plusMinus }}</td>
+            <tbody *ngFor="let season of seasons">
+              <tr *ngIf="season.total.points !== '-1'">
+                <td>{{ season.seasonYear }}</td>
+                <td>{{ season.total.points }}</td>
+                <td>{{ season.total.assists }}</td>
+                <td>{{ season.total.totReb }}</td>
+                <td>{{ season.total.blocks }}</td>
+                <td>{{ season.total.steals }}</td>
+                <td>{{ season.total.turnovers }}</td>
+                <td>{{ season.total.offReb }}</td>
+                <td>{{ season.total.defReb }}</td>
+                <td>{{ season.total.gamesPlayed }}</td>
+                <td>{{ season.total.plusMinus }}</td>
               </tr>
             </tbody>
           </table>

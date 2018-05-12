@@ -11,25 +11,25 @@ import { NbaService } from './../nba.service';
 })
 export class TeamdetailsComponent implements OnInit {
 
-  teamDetail: Detail;
+  teamDetails: Detail;
   teamRostersPlayers: Standard[];
+  teamId;
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
     this.route.params.subscribe(res => {
       console.log(res.id);
 
+      this.teamId = res.id;
+
       this.nbaService.getTeamDetail(res.id).subscribe(data => {
-        console.log('teamDetail', data);
-        this.teamDetail = data;
-        // const teamDetails = data.TeamDetails;
+        console.log('teamDetails', data);
+        this.teamDetails = data.TeamDetails[0].Details[0];
       });
 
       this.nbaService.getAllPlayers(2017).subscribe(data => {
         console.log('teamRostersPlayers', data);
         const players = data.league.standard;
-        this.teamRostersPlayers = players.filter(player => player.teamId);
-        // const teamRosters = data.league.standard;
-        // this.teamRostersPlayers = teamRosters.filter(player => player.teamId);
+        this.teamRostersPlayers = players.filter(player => player.teamId === this.teamId);
       });
     });
   }

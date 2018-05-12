@@ -17,6 +17,11 @@ export class TeamComponent implements OnInit {
   playersList: Standard[];
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
+
+    const excludedFirstnames = ['Wade', 'MarShon', 'Markel', 'Gerald', 'RJ', 'Demetrius', 'Georges', 'Georgios',
+    'Malachi', 'Derrick', 'Ramon', 'Marquis', 'Markieff'];
+    const excludedLastnames = ['Lawson'];
+
     this.route.params.subscribe(res => {
       console.log(res.year);
 
@@ -31,12 +36,9 @@ export class TeamComponent implements OnInit {
         console.log('players', data);
         const players = data.league.standard;
         this.playersList = players.filter(
-          player => player.heightMeters !== ''
-          && player.draft.pickNum !== '' && player.firstName !== 'Wade' && player.firstName !== 'MarShon'
-          && player.firstName !== 'Markel' && player.firstName !== 'Gerald' && player.firstName !== 'RJ'
-          && player.firstName !== 'Demetrius' && player.lastName !== 'Lawson' && player.firstName !== 'Georges'
-          && player.firstName !== 'Georgios' && player.firstName !== 'Malachi' && player.firstName !== 'Derrick'
-          && player.firstName !== 'Ramon' && player.firstName !== 'Marquis' && player.firstName !== 'Markieff'
+          player => player.heightMeters && player.draft.pickNum &&
+          excludedFirstnames.indexOf(player.firstName) === -1 &&
+          excludedLastnames.indexOf(player.lastName) === -1
         );
       });
     });

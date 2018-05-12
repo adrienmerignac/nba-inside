@@ -1,4 +1,5 @@
-import { TeamsResponse, PlayerResponse, TeamDetailResponse, PlayerProfileResponse, Detail } from './models';
+import { TeamsResponse, PlayerResponse, TeamDetailResponse, Detail } from './models';
+import { PlayerProfileResponse } from './models/playerdetails';
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -23,13 +24,13 @@ export class NbaService {
   }
 
   // Requête pour avoir le détail d'une équipe -- teamdetail component
-  public getTeamDetail(teamId: number): Observable<Detail> {
-    return this.http.get<Detail>(`/roster/feeds/teams/profile/${teamId}_TeamProfile.js`);
+  public getTeamDetail(teamId: number): Observable<TeamDetailResponse> {
+    return this.http.get<TeamDetailResponse>(`/roster/feeds/teams/profile/${teamId}_TeamProfile.js`);
   }
 
   // Stats d'un joueur sur une année donnée et avec son personId -- player component
-  public getPlayerProfile(year: number, playerId: number): Observable<any> {
-    return this.http.get<any>(`/nba/prod/v1/${year}/players/${playerId}_profile.json`);
+  public getPlayerProfile(year: number, playerId: number): Observable<PlayerProfileResponse> {
+    return this.http.get<PlayerProfileResponse>(`/nba/prod/v1/${year}/players/${playerId}_profile.json`);
   }
 
   // Bio d'un joueur -- player component
