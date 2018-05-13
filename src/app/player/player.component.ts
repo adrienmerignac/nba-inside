@@ -1,5 +1,5 @@
 import { Season } from './../models/playerdetails';
-import { Bio } from './../models';
+import { Bio, BioResponse } from './../models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { PlayerProfileResponse } from '../models/playerdetails';
 export class PlayerComponent implements OnInit {
 
   seasons: Season[];
-  bio: any;
+  bio: Bio;
   playerProfileId;
   playerTeamId;
 
@@ -31,10 +31,10 @@ export class PlayerComponent implements OnInit {
         const seasonsData = data.league.standard.stats.regularSeason.season;
         this.seasons = seasonsData;
         this.seasons = seasonsData.map(
-          season => {
+          seasonData => {
             return {
-              ...season,
-              teams: season.teams.filter(team => team.ppg !== '-1')
+              ...seasonData,
+              teams: seasonData.teams.filter(team => team.ppg !== '-1')
             };
           }
         );
@@ -42,11 +42,15 @@ export class PlayerComponent implements OnInit {
 
       this.nbaService.getPlayerBio(res.id).subscribe(data => {
         console.log('bio', data);
-        this.bio = data;
+        this.bio = {
+          ...data.Bio,
+          // Surcharge de l'attribut display_name / On lui affecte une nouvelle valeure ES6
+          display_name: data.Bio.display_name.split(',').reverse().join(' ').trim()
+        };
       });
     });
   }
+
   ngOnInit() {
   }
-
 }

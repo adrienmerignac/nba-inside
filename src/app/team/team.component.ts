@@ -15,6 +15,8 @@ export class TeamComponent implements OnInit {
   westTeams: Standard[];
   eastTeams: Standard[];
   playersList: Standard[];
+  searchPlayer = '';
+  filterPlayers = [];
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
 
@@ -40,12 +42,25 @@ export class TeamComponent implements OnInit {
           excludedFirstnames.indexOf(player.firstName) === -1 &&
           excludedLastnames.indexOf(player.lastName) === -1
         );
+        this.filterPlayers = [...this.playersList];
       });
     });
   }
 
   public goToTeamDetail(id: number) {
     this.router.navigate(['/teamdetails', id]);
+  }
+
+  public searchPlayers() {
+    const search = this.formatSearch(this.searchPlayer);
+    this.filterPlayers = search.length > 0 ? this.playersList.filter(
+      player => this.formatSearch(player.firstName).indexOf(search) !== -1 ||
+        this.formatSearch(player.lastName).indexOf(search) !== -1
+    ) : [...this.playersList];
+  }
+
+  private formatSearch(value: string) {
+    return value.toLowerCase().replace(' ', '');
   }
 
   ngOnInit() {

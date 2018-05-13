@@ -34,8 +34,8 @@ export class TeamdetailsComponent implements OnInit {
     });
   }
 
-  public goToPlayerProfile(id: number) {
-    this.router.navigate(['/player', id]);
+  public goToPlayerProfile(teamId: number, id: number) {
+    this.router.navigate(['/player/', teamId, id]);
   }
 
   ngOnInit() {

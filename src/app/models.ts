@@ -178,6 +178,6 @@ export interface Bio {
     other_text: string;
 }
 
-export interface RootObject {
+export interface BioResponse {
     Bio: Bio;
 }

@@ -1,4 +1,4 @@
-import { TeamsResponse, PlayerResponse, TeamDetailResponse, Detail } from './models';
+import { TeamsResponse, PlayerResponse, TeamDetailResponse, Detail, BioResponse } from './models';
 import { PlayerProfileResponse } from './models/playerdetails';
 import { Injectable } from '@angular/core';
 
@@ -34,7 +34,7 @@ export class NbaService {
   }
 
   // Bio d'un joueur -- player component
-  public getPlayerBio(playerId: number): Observable<any> {
-    return this.http.get<any>(`/nba/json/bios/player_${playerId}.json`);
+  public getPlayerBio(playerId: number): Observable<BioResponse> {
+    return this.http.get<BioResponse>(`/nba/json/bios/player_${playerId}.json`);
   }
 }

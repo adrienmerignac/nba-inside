@@ -10,7 +10,6 @@ mat-card {
     overflow-y: auto;
     margin-top: 0;
     background: rgba(17, 14, 14, 0.342);
-    cursor: pointer;
 }
 
 .title {
@@ -19,14 +18,18 @@ mat-card {
 }
 
 h1 {
-    padding-top: .8em;
-    padding-left: .8em;
+    padding-top: .5em;
+    padding-left: .5em;
 }
 
 h2 {
     padding-top: 1.2em;
     padding-bottom: .6em;
     text-decoration: underline;
+}
+
+.explication {
+    padding-bottom: .2em;
 }
 
 table {
@@ -40,6 +43,6 @@ th, td {
     border-bottom: 1px solid rgba(187, 184, 184, 0.692);
 }
 
-tr:hover {
+tbody:hover {
     background-color: #c7c1c14b;
 }

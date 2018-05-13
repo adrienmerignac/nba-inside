@@ -1,17 +1,19 @@
-<ng-container *ngIf="seasons && bio">
+<ng-container *ngIf="seasons">
   <div class="main">
     <mat-card>
       <mat-card-title>
         <div class="title">
           <img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ playerTeamId }}/2017/260x190/{{ playerProfileId }}.png"
-            alt="{{ bio.Bio.display_name }}" title="{{ bio.Bio.display_name }}">
+            alt="{{ bio?.display_name }}" title="{{ bio?.display_name }}">
           <h1>
-            {{ bio.Bio.display_name }}
+            {{ bio?.display_name }}
           </h1>
         </div>
       </mat-card-title>
       <mat-card-content>
         <h2>Per Game Statistics</h2>
+          <p>Same season year means the player was in two different teams the same year.</p>
+          <p class="explication">So this are the stats of the player in each team he was the same year.</p>
         <div>
           <table>
             <thead>
@@ -80,6 +82,10 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div>
+          <h2>Biography</h2>
+          <p [innerHTML]="bio?.professional"></p>
         </div>
       </mat-card-content>
     </mat-card>

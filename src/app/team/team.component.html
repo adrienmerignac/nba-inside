@@ -1,6 +1,6 @@
 <ng-container>
   <mat-tab-group>
-    <mat-tab label="NbaTeams">
+    <mat-tab label="NBA Teams">
       <div>
         <mat-card>
           <mat-card-title>
@@ -12,7 +12,7 @@
             <span *ngFor="let team of eastTeams">
               <a href="teamdetails/{{ team.teamId }}">
                 <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" alt="{{ team.city }}"
-                  title="{{ team.altCityName }}" onclick="goToTeamDetail(team.teamId)">
+                  title="{{ team.altCityName }}" (click)="goToTeamDetail(team.teamId)">
               </a>
             </span>
           </mat-card-content>
@@ -30,7 +30,7 @@
               <span *ngFor="let team of westTeams">
                 <a href="teamdetails/{{ team.teamId }}" title="{{ team.altCityName }}">
                   <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" alt="{{ team.city }}"
-                    title="{{ team.altCityName }}" onclick="goToTeamDetail(team.teamId)">
+                    title="{{ team.altCityName }}" (click)="goToTeamDetail(team.teamId)">
                 </a>
               </span>
             </mat-card-content>
@@ -38,30 +38,33 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="NbaPlayers">
+    <mat-tab label="NBA Players">
       <div class="playercard">
         <mat-card>
           <mat-card-title>
-            <h1>Nba Players</h1>
+            <div class="searchplayer">
+              <h1>Nba Players</h1>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Search Players" (keyup)="searchPlayers()" [(ngModel)]="searchPlayer">
+              </mat-form-field>
+            </div>
           </mat-card-title>
           <mat-card-content>
             <mat-list>
-              <mat-list-item *ngFor="let player of playersList">
-                <div class="matlistitems">
-                  <img class="playerimage" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ player.teamId }}/2017/260x190/{{ player.personId }}.png"
-                    alt="{{ player.firstName }} {{ player.lastName }}" title="{{ player.firstName }} {{ player.lastName }}">
-                  <p class="matline">
-                    <a class="playerscontent" href="player/{{ player.teamId }}/{{ player.personId }}">
+              <mat-list-item *ngFor="let player of filterPlayers">
+                <a class="playerscontent" href="player/{{ player.teamId }}/{{ player.personId }}">
+                  <div class="matlistitems">
+                    <img class="playerimage" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ player.teamId }}/2017/260x190/{{ player.personId }}.png"
+                      alt="{{ player.firstName }} {{ player.lastName }}" title="{{ player.firstName }} {{ player.lastName }}">
+                    <p class="matline">
                       <span>
-                        {{ player.firstName }} {{ player.lastName }}
+                          {{ player.lastName }}  {{ player.firstName }} 
                       </span>
-                    </a>
-                  </p>
-                </div>
+                    </p>
+                  </div>
+                </a>
               </mat-list-item>
             </mat-list>
-            <mat-paginator [length]="3" [pageSize]="3" [pageSizeOptions]="[3, 5, 10]" (page)="pageEvent = $event">
-            </mat-paginator>
           </mat-card-content>
         </mat-card>
       </div>

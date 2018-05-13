@@ -3,8 +3,8 @@
     <mat-card>
       <mat-card-title>
         <div class="title">
-          <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ teamDetails.Abbreviation }}_logo.svg" alt="{{ teamDetails.City }} {{ teamDetails.Nickname }}"
-            title="{{ teamDetails.City }} {{ teamDetails.Nickname }}">
+          <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ teamDetails.Abbreviation }}_logo.svg"
+            alt="{{ teamDetails.City }} {{ teamDetails.Nickname }}" title="{{ teamDetails.City }} {{ teamDetails.Nickname }}">
           <h1 class="title">
             {{ teamDetails.City }} {{ teamDetails.Nickname }}
           </h1>
@@ -60,7 +60,7 @@
               </tr>
             </thead>
             <tbody *ngFor="let teamRosterPlayer of teamRostersPlayers">
-              <tr onclick="goToPlayerProfile(teamRoster.personId)">
+              <tr (click)="goToPlayerProfile(teamRosterPlayer.teamId, teamRosterPlayer.personId)">
                 <td>
                   <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
@@ -68,15 +68,69 @@
                     </div>
                   </a>
                 </td>
-                <td>{{ teamRosterPlayer.jersey }}</td>
-                <td>{{ teamRosterPlayer.pos }}</td>
-                <td>{{ teamRosterPlayer.heightMeters }}</td>
-                <td>{{ teamRosterPlayer.weightPounds }}</td>
-                <td>{{ teamRosterPlayer.weightKilograms }}</td>
-                <td>{{ teamRosterPlayer.dateOfBirthUTC }}</td>
-                <td>{{ teamRosterPlayer.nbaDebutYear }}</td>
-                <td>{{ teamRosterPlayer.yearsPro }}</td>
-                <td>{{ teamRosterPlayer.lastAffiliation }}</td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.jersey }}
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.pos }}
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.heightMeters }}
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.weightPounds }}
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.weightKilograms }}
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.dateOfBirthUTC }}
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.nbaDebutYear }}
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.yearsPro }}
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                    <div class="playerLink">
+                      {{ teamRosterPlayer.lastAffiliation }}
+                    </div>
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>
