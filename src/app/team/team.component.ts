@@ -14,15 +14,8 @@ export class TeamComponent implements OnInit {
 
   westTeams: Standard[];
   eastTeams: Standard[];
-  playersList: Standard[];
-  searchPlayer = '';
-  filterPlayers = [];
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
-
-    const excludedFirstnames = ['Wade', 'MarShon', 'Markel', 'Gerald', 'RJ', 'Demetrius', 'Georges', 'Georgios',
-    'Malachi', 'Derrick', 'Ramon', 'Marquis', 'Markieff'];
-    const excludedLastnames = ['Lawson'];
 
     this.route.params.subscribe(res => {
       console.log(res.year);
@@ -33,17 +26,6 @@ export class TeamComponent implements OnInit {
         this.eastTeams = teams.filter(team => team.isNBAFranchise === true && team.confName === 'East');
         this.westTeams = teams.filter(team => team.isNBAFranchise === true && team.confName === 'West');
       });
-
-      this.nbaService.getAllPlayers(2017).subscribe(data => {
-        console.log('players', data);
-        const players = data.league.standard;
-        this.playersList = players.filter(
-          player => player.heightMeters && player.draft.pickNum &&
-          excludedFirstnames.indexOf(player.firstName) === -1 &&
-          excludedLastnames.indexOf(player.lastName) === -1
-        );
-        this.filterPlayers = [...this.playersList];
-      });
     });
   }
 
@@ -51,19 +33,6 @@ export class TeamComponent implements OnInit {
     this.router.navigate(['/teamdetails', id]);
   }
 
-  public searchPlayers() {
-    const search = this.formatSearch(this.searchPlayer);
-    this.filterPlayers = search.length > 0 ? this.playersList.filter(
-      player => this.formatSearch(player.firstName).indexOf(search) !== -1 ||
-        this.formatSearch(player.lastName).indexOf(search) !== -1
-    ) : [...this.playersList];
-  }
-
-  private formatSearch(value: string) {
-    return value.toLowerCase().replace(' ', '');
-  }
-
   ngOnInit() {
   }
-
 }

@@ -8,41 +8,9 @@
           <h1 class="title">
             {{ teamDetails.City }} {{ teamDetails.Nickname }}
           </h1>
-          <div class="background">
-            <h3>Background</h3>
-            <div class="detail">
-              <strong>Founded:</strong>
-              {{ teamDetails.YearFounded }}
-            </div>
-            <div class="detail">
-              <strong>City:</strong>
-              {{ teamDetails.City }}
-            </div>
-            <div class="detail">
-              <strong>Arena:</strong>
-              {{ teamDetails.Arena }}
-            </div>
-            <div class="detail">
-              <strong>Capacity:</strong>
-              {{ teamDetails.ArenaCapacity }}
-            </div>
-            <div class="detail">
-              <strong>Owner:</strong>
-              {{ teamDetails.Owner }}
-            </div>
-            <div class="detail">
-              <strong>Manager:</strong>
-              {{ teamDetails.GeneralManager }}
-            </div>
-            <div class="detail">
-              <strong>HeadCoach:</strong>
-              {{ teamDetails.HeadCoach }}
-            </div>
-          </div>
         </div>
       </mat-card-title>
       <mat-card-content>
-        <h2>Players</h2>
         <div>
           <table>
             <thead>
@@ -62,70 +30,70 @@
             <tbody *ngFor="let teamRosterPlayer of teamRostersPlayers">
               <tr (click)="goToPlayerProfile(teamRosterPlayer.teamId, teamRosterPlayer.personId)">
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.firstName }} {{ teamRosterPlayer.lastName }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.jersey }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.pos }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.heightMeters }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.weightPounds }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.weightKilograms }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.dateOfBirthUTC }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.nbaDebutYear }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.yearsPro }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="player/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
                     <div class="playerLink">
                       {{ teamRosterPlayer.lastAffiliation }}
                     </div>
@@ -134,6 +102,37 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div>
+          <h2 class="background">Background</h2>
+          <div class="detail">
+            <strong>Founded:</strong>
+            {{ teamDetails.YearFounded }}
+          </div>
+          <div class="detail">
+            <strong>City:</strong>
+            {{ teamDetails.City }}
+          </div>
+          <div class="detail">
+            <strong>Arena:</strong>
+            {{ teamDetails.Arena }}
+          </div>
+          <div class="detail">
+            <strong>Capacity:</strong>
+            {{ teamDetails.ArenaCapacity }}
+          </div>
+          <div class="detail">
+            <strong>Owner:</strong>
+            {{ teamDetails.Owner }}
+          </div>
+          <div class="detail">
+            <strong>Manager:</strong>
+            {{ teamDetails.GeneralManager }}
+          </div>
+          <div class="detail">
+            <strong>HeadCoach:</strong>
+            {{ teamDetails.HeadCoach }}
+          </div>
         </div>
       </mat-card-content>
     </mat-card>

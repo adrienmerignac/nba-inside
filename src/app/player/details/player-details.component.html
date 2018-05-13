@@ -1,0 +1,93 @@
+<ng-container *ngIf="seasons">
+  <div class="main">
+    <mat-card>
+      <mat-card-title>
+        <div class="title">
+          <img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ playerTeamId }}/2017/260x190/{{ playerProfileId }}.png"
+            alt="{{ bio?.display_name }}" title="{{ bio?.display_name }}">
+          <h1>
+            {{ bio?.display_name }}
+          </h1>
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+        <h2>Per Game Statistics</h2>
+          <p>Same season year means the player was in two different teams the same year.</p>
+          <p class="explication">So this are the stats of the player in each team he was the same year.</p>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>Season</th>
+                <th>PointPG</th>
+                <th>ReboundPG</th>
+                <th>AassistPG</th>
+                <th>MinutesPG</th>
+                <th>TurnoverPG</th>
+                <th>StealPG</th>
+                <th>BlockPG</th>
+                <th>FGP</th>
+                <th>TPP</th>
+                <th>FTP</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let season of seasons">
+              <tr *ngFor="let team of season.teams">
+                <td>{{ season.seasonYear }}</td>
+                <td>{{ team.ppg }}</td>
+                <td>{{ team.rpg }}</td>
+                <td>{{ team.apg }}</td>
+                <td>{{ team.mpg }}</td>
+                <td>{{ team.topg }}</td>
+                <td>{{ team.spg }}</td>
+                <td>{{ team.bpg }}</td>
+                <td>{{ team.fgp }}%</td>
+                <td>{{ team.tpp }}%</td>
+                <td>{{ team.ftp }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h2>Total Statistics</h2>
+        <div class="container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Season</th>
+                <th>Points</th>
+                <th>Assists</th>
+                <th>Rebounds</th>
+                <th>Blocks</th>
+                <th>Steals</th>
+                <th>Turnover</th>
+                <th>offReb</th>
+                <th>defReb</th>
+                <th>GamesPlayed</th>
+                <th>plusMinus</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let season of seasons">
+              <tr *ngIf="season.total.points !== '-1'">
+                <td>{{ season.seasonYear }}</td>
+                <td>{{ season.total.points }}</td>
+                <td>{{ season.total.assists }}</td>
+                <td>{{ season.total.totReb }}</td>
+                <td>{{ season.total.blocks }}</td>
+                <td>{{ season.total.steals }}</td>
+                <td>{{ season.total.turnovers }}</td>
+                <td>{{ season.total.offReb }}</td>
+                <td>{{ season.total.defReb }}</td>
+                <td>{{ season.total.gamesPlayed }}</td>
+                <td>{{ season.total.plusMinus }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2>Biography</h2>
+          <p [innerHTML]="bio?.professional"></p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-container>

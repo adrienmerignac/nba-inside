@@ -1,0 +1,47 @@
+.main {
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+mat-card {
+    color: #FDFEFE;
+    height: 660px;
+    overflow-x: scroll;
+    overflow-y: auto;
+    margin-top: 0;
+    background: rgba(17, 14, 14, 0.342);
+}
+
+.title {
+    margin: 0;
+    display: inline-flex;
+}
+
+h1 {
+    padding-top: .5em;
+    padding-left: .5em;
+}
+
+h2 {
+    padding-top: 1.2em;
+    padding-bottom: .6em;
+}
+
+.explication {
+    padding-bottom: .2em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(187, 184, 184, 0.692);
+}
+
+tbody:hover {
+    background-color: #c7c1c14b;
+}
