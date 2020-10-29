@@ -9,8 +9,7 @@
       <mat-card-content>
         <span *ngFor="let team of eastTeams">
           <a href="teamdetails/{{ team.teamId }}">
-            <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" alt="{{ team.city }}"
-              title="{{ team.altCityName }}" (click)="goToTeamDetail(team.teamId)">
+            <p (click)="goToTeamDetail(team.teamId)">{{ team.name }}</p>
           </a>
         </span>
       </mat-card-content>
@@ -26,9 +25,8 @@
         </mat-card-title>
         <mat-card-content>
           <span *ngFor="let team of westTeams">
-            <a href="teamdetails/{{ team.teamId }}" title="{{ team.altCityName }}">
-              <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ team.tricode }}_logo.svg" alt="{{ team.city }}"
-                title="{{ team.altCityName }}" (click)="goToTeamDetail(team.teamId)">
+            <a href="teamdetails/{{ team.teamId }}">
+              <p (click)="goToTeamDetail(team.teamId)">{{ team.name }}</p>
             </a>
           </span>
         </mat-card-content>

@@ -14,8 +14,8 @@ export class NbaService {
   constructor(private http: HttpClient) { }
 
   // Liste de toutes les équipes Américaines -- team component
-  public getAllTeams(year: number): Observable<TeamsResponse> {
-    return this.http.get<TeamsResponse>(`/nba/prod/v1/${year}/teams.json`);
+  public getAllTeams(): Observable<TeamsResponse[]> {
+    return this.http.get<TeamsResponse[]>(`/nba/api/v1/teams`);
   }
 
   // Liste de tous les joueurs de la NBA -- teamdetail component

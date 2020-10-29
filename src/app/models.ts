@@ -6,28 +6,51 @@ export interface Internal {
     eventName: string;
 }
 
-export interface Standard {
-    isNBAFranchise: boolean;
-    isAllStar: boolean;
-    city: string;
-    altCityName: string;
-    fullName: string;
-    tricode: string;
-    teamId: string;
-    nickname: string;
-    urlName: string;
-    confName: string;
-    divName: string;
-}
+// export interface Standard {
+//     isNBAFranchise: boolean;
+//     isAllStar: boolean;
+//     city: string;
+//     altCityName: string;
+//     fullName: string;
+//     tricode: string;
+//     teamId: string;
+//     nickname: string;
+//     urlName: string;
+//     confName: string;
+//     divName: string;
+// }
 
-export interface League {
-    standard: Standard[];
-}
+// export interface League {
+//     standard: Standard[];
+// }
+
+// export interface TeamsResponse {
+//     _internal: Internal;
+//     league: League;
+// }
 
 export interface TeamsResponse {
-    _internal: Internal;
-    league: League;
+    id: number;
+    abbreviation: string;
+    city: string;
+    conference: string;
+    division: string;
+    full_name: string;
+    name: string;
 }
+
+// export interface Meta {
+//     total_pages: number;
+//     current_page: number;
+//     next_page?: any;
+//     per_page: number;
+//     total_count: number;
+// }
+
+// export interface TeamsResponse {
+//     teams: Datum[];
+//     meta: Meta;
+// }
 
 // All Nba Players
 

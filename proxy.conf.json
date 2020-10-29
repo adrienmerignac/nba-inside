@@ -1,6 +1,6 @@
 {
     "/nba": {
-      "target": "http://data.nba.net",
+      "target": "https://www.balldontlie.io",
       "secure": true,
       "pathRewrite": {
         "^/nba": ""
