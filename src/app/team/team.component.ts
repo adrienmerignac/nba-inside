@@ -12,19 +12,17 @@ import { NbaService } from './../nba.service';
 })
 export class TeamComponent implements OnInit {
 
-  westTeams: Standard[];
-  eastTeams: Standard[];
+  westTeams: TeamsResponse[];
+  eastTeams: TeamsResponse[];
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
 
     this.route.params.subscribe(res => {
-      console.log(res.year);
-
-      this.nbaService.getAllTeams(2017).subscribe(data => {
+      console.log(res);
+      this.nbaService.getAllTeams().subscribe(data => {
         console.log('teams', data);
-        const teams = data.league.standard;
-        this.eastTeams = teams.filter(team => team.isNBAFranchise === true && team.confName === 'East');
-        this.westTeams = teams.filter(team => team.isNBAFranchise === true && team.confName === 'West');
+        this.eastTeams = data.filter(team => team.conference === 'East');
+        this.westTeams = data.filter(team => team.conference === 'West');
       });
     });
   }
