@@ -1,4 +1,4 @@
-<ng-container>
+<ng-container *ngIf="filterPlayers && season">
   <mat-card class="searchcontainer">
     <mat-card-title>
     </mat-card-title>
@@ -18,13 +18,13 @@
       <mat-card-content>
         <mat-list>
           <mat-list-item *ngFor="let player of filterPlayers">
-            <a class="playerscontent" href="players/{{ player.teamId }}/{{ player.personId }}">
+            <a class="playerscontent" [routerLink]="['/players', season.Season, player.PlayerID]">
               <div class="matlistitems">
-                <img class="playerimage" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ player.teamId }}/2017/260x190/{{ player.personId }}.png"
-                  alt="{{ player.firstName }} {{ player.lastName }}" title="{{ player.firstName }} {{ player.lastName }}">
+                <img class="playerimage" src="{{ player.PhotoUrl }}"
+                  alt="{{ player.FirstName }} {{ player.LastName }}" title="{{ player.FirstName }} {{ player.LastName }}">
                 <p class="matline">
                   <span>
-                    {{ player.lastName }} {{ player.firstName }}
+                    {{ player.LastName }} {{ player.FirstName }}
                   </span>
                 </p>
               </div>

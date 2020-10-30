@@ -1,18 +1,18 @@
 .playercard {
   margin-top: 1em;
-  height: 600px; //Or any other height you wish
-  overflow-x: scroll;
 }
 
 mat-card {
   color: #FDFEFE;
-  margin-top: 0;
-  overflow-y: auto;
-  background: rgba(17, 14, 14, 0.342);
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 16px;
+  margin-top: 16px;
 }
 
 .searchcontainer {
-  padding: 0;
+  padding-bottom: 0;
+  padding-top: .3em;
   padding-left: 1em;
   padding-right: 1em;
   margin-top: 1em;
@@ -62,7 +62,7 @@ a {
 
 .playerimage {
   height: 85px;
-  width: 110px;
+  width: 70px;
 }
 
 .matline {

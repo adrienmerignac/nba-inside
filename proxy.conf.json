@@ -7,6 +7,14 @@
       },
       "changeOrigin": true
     },
+    "/nbastats": {
+      "target": "https://api.sportsdata.io",
+      "secure": true,
+      "pathRewrite": {
+        "^/nbastats": ""
+      },
+      "changeOrigin": true
+    },
     "/roster": {
       "target": "http://stats.nba.com",
       "secure": true,

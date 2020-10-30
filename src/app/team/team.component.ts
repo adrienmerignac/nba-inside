@@ -1,5 +1,4 @@
-import { TeamsResponse, Standard, PlayerResponse } from './../models';
-import { Team } from '../models';
+import { TeamsResponse } from './../models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -17,18 +16,14 @@ export class TeamComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
 
-    this.route.params.subscribe(res => {
-      console.log(res);
-      this.nbaService.getAllTeams().subscribe(data => {
-        console.log('teams', data);
-        this.eastTeams = data.filter(team => team.conference === 'East');
-        this.westTeams = data.filter(team => team.conference === 'West');
+      this.nbaService.getAllTeams().subscribe(res => {
+        this.eastTeams = res.filter(team => team.Conference === 'Eastern');
+        this.westTeams = res.filter(team => team.Conference === 'Western');
       });
-    });
   }
 
-  public goToTeamDetail(id: number) {
-    this.router.navigate(['/teamdetails', id]);
+  public goToTeamDetail(id: number, team: string) {
+    this.router.navigate(['/teamdetails', id, team]);
   }
 
   ngOnInit() {

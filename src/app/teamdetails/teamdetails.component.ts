@@ -1,4 +1,4 @@
-import { Detail, PlayerResponse, TeamDetailResponse, Standard, TeamDetail } from './../models';
+import { TeamsResponse, PlayerByTeamResponse, Season } from './../models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -11,31 +11,30 @@ import { NbaService } from './../nba.service';
 })
 export class TeamdetailsComponent implements OnInit {
 
-  teamDetails: Detail;
-  teamRostersPlayers: Standard[];
-  teamId;
+  teamDetails: TeamsResponse;
+  teamRostersPlayers: PlayerByTeamResponse[];
+  season: Season;
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
     this.route.params.subscribe(res => {
-      console.log(res.id);
 
-      this.teamId = res.id;
-
-      this.nbaService.getTeamDetail(res.id).subscribe(data => {
-        console.log('teamDetails', data);
-        this.teamDetails = data.TeamDetails[0].Details[0];
+      this.nbaService.getAllTeams().subscribe(data => {
+        this.teamDetails = data.find(teamdetail => res.team === teamdetail.Key);
+        console.log(this.teamDetails);
       });
 
-      this.nbaService.getAllPlayers(2017).subscribe(data => {
-        console.log('teamRostersPlayers', data);
-        const players = data.league.standard;
-        this.teamRostersPlayers = players.filter(player => player.teamId === this.teamId);
+      this.nbaService.getPlayerByTeam(res.team).subscribe(result => {
+        this.teamRostersPlayers = result;
+      });
+
+      this.nbaService.getSeason().subscribe(result => {
+        this.season = result;
       });
     });
   }
 
-  public goToPlayerProfile(teamId: number, id: number) {
-    this.router.navigate(['/player/', teamId, id]);
+  public goToPlayerProfile(season: number, playerid: number) {
+    this.router.navigate(['/player/', season, playerid]);
   }
 
   ngOnInit() {

@@ -1,34 +1,32 @@
 .main {
     width: 100%;
-    margin-top: 0.5em;
 }
 
 mat-card {
     color: #FDFEFE;
-    height: 660px;
-    overflow-x: scroll;
-    overflow-y: auto;
-    margin-top: 0;
-    background: rgba(17, 14, 14, 0.342);
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+img {
+    width: 100px;
+}
+
+.mat-card-title {
+    font-size: 16px;
 }
 
 .title {
     margin: 0;
     display: inline-flex;
+    margin-bottom: 20px;
 }
 
 h1 {
-    padding-top: .5em;
+    padding-top: 1em;
     padding-left: .5em;
-}
-
-h2 {
-    padding-top: 1.2em;
-    padding-bottom: .6em;
-}
-
-.explication {
-    padding-bottom: .2em;
 }
 
 table {

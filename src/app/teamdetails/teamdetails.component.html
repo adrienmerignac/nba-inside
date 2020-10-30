@@ -1,12 +1,10 @@
-<ng-container *ngIf="teamDetails && teamRostersPlayers">
+<ng-container *ngIf="teamDetails">
   <div class="main">
     <mat-card>
       <mat-card-title>
         <div class="title">
-          <img class="logo" src="http://stats.nba.com/media/img/teams/logos/season/2017-18/{{ teamDetails.Abbreviation }}_logo.svg"
-            alt="{{ teamDetails.City }} {{ teamDetails.Nickname }}" title="{{ teamDetails.City }} {{ teamDetails.Nickname }}">
           <h1 class="title">
-            {{ teamDetails.City }} {{ teamDetails.Nickname }}
+            {{ teamDetails.City }} {{ teamDetails.Name }}
           </h1>
         </div>
       </mat-card-title>
@@ -18,121 +16,74 @@
                 <th>Name</th>
                 <th>N°</th>
                 <th>Pos</th>
-                <th>HeightMeters</th>
-                <th>WeightPounds</th>
-                <th>Poids</th>
+                <th>Height</th>
+                <th>Weight</th>
                 <th>Birth</th>
-                <th>NbaStart</th>
                 <th>Exeprience</th>
                 <th>College</th>
               </tr>
             </thead>
             <tbody *ngFor="let teamRosterPlayer of teamRostersPlayers">
-              <tr (click)="goToPlayerProfile(teamRosterPlayer.teamId, teamRosterPlayer.personId)">
+              <tr>
                 <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.firstName }} {{ teamRosterPlayer.lastName }}
+                      {{ teamRosterPlayer.DraftKingsName }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.jersey }}
+                      {{ teamRosterPlayer.Jersey }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.pos }}
+                      {{ teamRosterPlayer.Position }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.heightMeters }}
+                      {{ teamRosterPlayer.Height }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.weightPounds }}
+                      {{ teamRosterPlayer.Weight }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.weightKilograms }}
+                      {{ teamRosterPlayer.BirthDate }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.dateOfBirthUTC }}
+                      {{ teamRosterPlayer.Experience }}
                     </div>
                   </a>
                 </td>
                 <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
+                  <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.nbaDebutYear }}
-                    </div>
-                  </a>
-                </td>
-                <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
-                    <div class="playerLink">
-                      {{ teamRosterPlayer.yearsPro }}
-                    </div>
-                  </a>
-                </td>
-                <td>
-                  <a href="players/{{ teamRosterPlayer.teamId }}/{{ teamRosterPlayer.personId }}">
-                    <div class="playerLink">
-                      {{ teamRosterPlayer.lastAffiliation }}
+                      {{ teamRosterPlayer.College }}
                     </div>
                   </a>
                 </td>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div>
-          <h2 class="background">Background</h2>
-          <div class="detail">
-            <strong>Founded:</strong>
-            {{ teamDetails.YearFounded }}
-          </div>
-          <div class="detail">
-            <strong>City:</strong>
-            {{ teamDetails.City }}
-          </div>
-          <div class="detail">
-            <strong>Arena:</strong>
-            {{ teamDetails.Arena }}
-          </div>
-          <div class="detail">
-            <strong>Capacity:</strong>
-            {{ teamDetails.ArenaCapacity }}
-          </div>
-          <div class="detail">
-            <strong>Owner:</strong>
-            {{ teamDetails.Owner }}
-          </div>
-          <div class="detail">
-            <strong>Manager:</strong>
-            {{ teamDetails.GeneralManager }}
-          </div>
-          <div class="detail">
-            <strong>HeadCoach:</strong>
-            {{ teamDetails.HeadCoach }}
-          </div>
         </div>
       </mat-card-content>
     </mat-card>
