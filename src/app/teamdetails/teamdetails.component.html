@@ -63,7 +63,7 @@
                 <td>
                   <a [routerLink]="['/players', season.Season, teamRosterPlayer.PlayerID]">
                     <div class="playerLink">
-                      {{ teamRosterPlayer.BirthDate }}
+                      {{ teamRosterPlayer.BirthDate | date: 'dd/MM/yyyy' }}
                     </div>
                   </a>
                 </td>
