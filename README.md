@@ -1,10 +1,10 @@
-# NbaApp
+# nba-inside
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8.
 
 ## Development server
 
-Run `npm run start` for a dev server and use prox conf. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --proxy-config proxy.conf.json --open` to launch the app. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
