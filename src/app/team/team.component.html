@@ -8,8 +8,8 @@
       </mat-card-title>
       <mat-card-content>
         <span *ngFor="let team of eastTeams">
-          <a href="teamdetails/{{ team.teamId }}">
-            <p (click)="goToTeamDetail(team.teamId)">{{ team.name }}</p>
+          <a [routerLink]="['teamdetails', team.Key]">
+            <img class="logo" src="{{ team.WikipediaLogoUrl }}" alt="{{ team.City }}" title="{{ team.Key }}">
           </a>
         </span>
       </mat-card-content>
@@ -17,7 +17,7 @@
   </div>
   <div>
     <div class="main">
-      <mat-card>
+      <mat-card class="westernCard">
         <mat-card-title>
           <h2 class="title">
             WEST CONFERENCE
@@ -25,8 +25,8 @@
         </mat-card-title>
         <mat-card-content>
           <span *ngFor="let team of westTeams">
-            <a href="teamdetails/{{ team.teamId }}">
-              <p (click)="goToTeamDetail(team.teamId)">{{ team.name }}</p>
+            <a [routerLink]="['teamdetails', team.Key]">
+              <img class="logo" src="{{ team.WikipediaLogoUrl }}" alt="{{ team.City }}" title="{{ team.Key }}">
             </a>
           </span>
         </mat-card-content>

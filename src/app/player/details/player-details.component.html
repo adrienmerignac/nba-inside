@@ -1,19 +1,16 @@
-<ng-container *ngIf="seasons">
-  <div class="main">
+<ng-container *ngIf="playerStats && playerId">
+  <div class="main pt-0 pb-0 mt-0 mb-0">
     <mat-card>
       <mat-card-title>
         <div class="title">
-          <img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/{{ playerTeamId }}/2017/260x190/{{ playerProfileId }}.png"
-            alt="{{ bio?.display_name }}" title="{{ bio?.display_name }}">
+          <img src="{{ playerId.PhotoUrl }}" alt="{{ playerStats.Name }}" title="{{ playerStats.Name }}">
           <h1>
-            {{ bio?.display_name }}
+            {{ playerStats.Name }}
           </h1>
         </div>
       </mat-card-title>
       <mat-card-content>
         <h2>Per Game Statistics</h2>
-          <p>Same season year means the player was in two different teams the same year.</p>
-          <p class="explication">So this are the stats of the player in each team he was the same year.</p>
         <div>
           <table>
             <thead>
@@ -31,19 +28,19 @@
                 <th>FTP</th>
               </tr>
             </thead>
-            <tbody *ngFor="let season of seasons">
-              <tr *ngFor="let team of season.teams">
-                <td>{{ season.seasonYear }}</td>
-                <td>{{ team.ppg }}</td>
-                <td>{{ team.rpg }}</td>
-                <td>{{ team.apg }}</td>
-                <td>{{ team.mpg }}</td>
-                <td>{{ team.topg }}</td>
-                <td>{{ team.spg }}</td>
-                <td>{{ team.bpg }}</td>
-                <td>{{ team.fgp }}%</td>
-                <td>{{ team.tpp }}%</td>
-                <td>{{ team.ftp }}%</td>
+            <tbody>
+              <tr>
+                <td>{{ playerStats.Season }}</td>
+                <td>{{ playerStats.Points / playerStats.Games }}</td>
+                <td>{{ playerStats.Rebounds / playerStats.Games | number:'1.0-2' }}</td>
+                <td>{{ playerStats.Assists / playerStats.Games | number:'1.0-2' }}</td>
+                <td>{{ playerStats.Minutes / playerStats.Games | number:'1.0-2' }}</td>
+                <td>{{ playerStats.Turnovers / playerStats.Games | number:'1.0-2' }}</td>
+                <td>{{ playerStats.Steals / playerStats.Games | number:'1.0-2' }}</td>
+                <td>{{ playerStats.BlockedShots / playerStats.Games | number:'1.0-2' }}</td>
+                <td>{{ playerStats.FieldGoalsPercentage }}%</td>
+                <td>{{ playerStats.ThreePointersPercentage }}%</td>
+                <td>{{ playerStats.FreeThrowsPercentage }}%</td>
               </tr>
             </tbody>
           </table>
@@ -66,26 +63,22 @@
                 <th>plusMinus</th>
               </tr>
             </thead>
-            <tbody *ngFor="let season of seasons">
-              <tr *ngIf="season.total.points !== '-1'">
-                <td>{{ season.seasonYear }}</td>
-                <td>{{ season.total.points }}</td>
-                <td>{{ season.total.assists }}</td>
-                <td>{{ season.total.totReb }}</td>
-                <td>{{ season.total.blocks }}</td>
-                <td>{{ season.total.steals }}</td>
-                <td>{{ season.total.turnovers }}</td>
-                <td>{{ season.total.offReb }}</td>
-                <td>{{ season.total.defReb }}</td>
-                <td>{{ season.total.gamesPlayed }}</td>
-                <td>{{ season.total.plusMinus }}</td>
+            <tbody>
+              <tr>
+                <td>{{ playerStats.Season }}</td>
+                <td>{{ playerStats.Points }}</td>
+                <td>{{ playerStats.Assists }}</td>
+                <td>{{ playerStats.Rebounds }}</td>
+                <td>{{ playerStats.BlockedShots }}</td>
+                <td>{{ playerStats.Steals }}</td>
+                <td>{{ playerStats.Turnovers }}</td>
+                <td>{{ playerStats.OffensiveRebounds }}</td>
+                <td>{{ playerStats.DefensiveRebounds }}</td>
+                <td>{{ playerStats.Games }}</td>
+                <td>{{ playerStats.PlusMinus }}</td>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div>
-          <h2>Biography</h2>
-          <p [innerHTML]="bio?.professional"></p>
         </div>
       </mat-card-content>
     </mat-card>

@@ -13,7 +13,7 @@ const routes: Routes = [
     component: TeamComponent
   },
   {
-    path: 'teamdetails/:id',
+    path: 'teamdetails/:team',
     component: TeamdetailsComponent
   },
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
     component: PlayerComponent
   },
   {
-    path: 'players/:teamid/:id',
+    path: 'players/:season/:playerid',
     component: PlayerDetailsComponent
   }
 ];

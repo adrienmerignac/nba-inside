@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Standard } from '../models';
+import { PlayerResponse, Season } from '../models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbaService } from '../nba.service';
 
@@ -10,33 +10,31 @@ import { NbaService } from '../nba.service';
 })
 export class PlayerComponent implements OnInit {
 
-  playersList: Standard[];
+  season: Season;
+  playersList: PlayerResponse[];
   searchPlayer = '';
   filterPlayers = [];
 
   constructor(private route: ActivatedRoute, private nbaService: NbaService, private router: Router) {
 
-    const excludedFirstnames = ['Wade', 'MarShon', 'Markel', 'Gerald', 'RJ', 'Demetrius', 'Georges', 'Georgios',
-    'Malachi', 'Derrick', 'Ramon', 'Marquis', 'Markieff'];
-    const excludedLastnames = ['Lawson'];
-
-    this.nbaService.getAllPlayers(2017).subscribe(data => {
-      console.log('players', data);
-      const players = data.league.standard;
-      this.playersList = players.filter(
-        player => player.heightMeters && player.draft.pickNum &&
-        excludedFirstnames.indexOf(player.firstName) === -1 &&
-        excludedLastnames.indexOf(player.lastName) === -1
+    this.nbaService.getAllPlayers().subscribe(data => {
+      // tslint:disable-next-line: no-shadowed-variable
+      this.playersList = data.sort((a, b) => a.LastName.localeCompare(b.LastName)
       );
       this.filterPlayers = [...this.playersList];
     });
+
+    this.nbaService.getSeason().subscribe(result => {
+      this.season = result;
+    });
+
    }
 
    public searchPlayers() {
     const search = this.formatSearch(this.searchPlayer);
     this.filterPlayers = search.length > 0 ? this.playersList.filter(
-      player => this.formatSearch(player.firstName).indexOf(search) !== -1 ||
-        this.formatSearch(player.lastName).indexOf(search) !== -1
+      player => this.formatSearch(player.FirstName).indexOf(search) !== -1 ||
+        this.formatSearch(player.LastName).indexOf(search) !== -1
     ) : [...this.playersList];
   }
 

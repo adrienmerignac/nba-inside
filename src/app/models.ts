@@ -6,30 +6,136 @@ export interface Internal {
     eventName: string;
 }
 
-// export interface Standard {
-//     isNBAFranchise: boolean;
-//     isAllStar: boolean;
-//     city: string;
-//     altCityName: string;
-//     fullName: string;
-//     tricode: string;
-//     teamId: string;
-//     nickname: string;
-//     urlName: string;
-//     confName: string;
-//     divName: string;
-// }
-
-// export interface League {
-//     standard: Standard[];
-// }
-
-// export interface TeamsResponse {
-//     _internal: Internal;
-//     league: League;
-// }
-
 export interface TeamsResponse {
+    TeamID: number;
+    Key: string;
+    Active: boolean;
+    City: string;
+    Name: string;
+    LeagueID: number;
+    StadiumID?: number;
+    Conference: string;
+    Division: string;
+    PrimaryColor: string;
+    SecondaryColor: string;
+    TertiaryColor: string;
+    QuaternaryColor: string;
+    WikipediaLogoUrl: string;
+    WikipediaWordMarkUrl: string;
+    GlobalTeamID: number;
+    NbaDotComTeamID: number;
+}
+
+// Player By Team
+
+export interface PlayerByTeamResponse {
+    PlayerID: number;
+    SportsDataID: string;
+    Status: string;
+    TeamID: number;
+    Team: string;
+    Jersey: number;
+    PositionCategory: string;
+    Position: string;
+    FirstName: string;
+    LastName: string;
+    Height: number;
+    Weight: number;
+    BirthDate?: Date;
+    BirthCity: string;
+    BirthState: string;
+    BirthCountry?: any;
+    HighSchool?: any;
+    College: string;
+    Salary?: number;
+    PhotoUrl: string;
+    Experience: number;
+    SportRadarPlayerID: string;
+    RotoworldPlayerID?: number;
+    RotoWirePlayerID: number;
+    FantasyAlarmPlayerID: number;
+    StatsPlayerID: number;
+    SportsDirectPlayerID: number;
+    XmlTeamPlayerID?: number;
+    InjuryStatus: string;
+    InjuryBodyPart: string;
+    InjuryStartDate?: any;
+    InjuryNotes: string;
+    FanDuelPlayerID: number;
+    DraftKingsPlayerID: number;
+    YahooPlayerID: number;
+    FanDuelName: string;
+    DraftKingsName: string;
+    YahooName: string;
+    DepthChartPosition: string;
+    DepthChartOrder?: number;
+    GlobalTeamID: number;
+    FantasyDraftName: string;
+    FantasyDraftPlayerID: number;
+    UsaTodayPlayerID: number;
+    UsaTodayHeadshotUrl: string;
+    UsaTodayHeadshotNoBackgroundUrl: string;
+    UsaTodayHeadshotUpdated: Date;
+    UsaTodayHeadshotNoBackgroundUpdated: Date;
+    NbaDotComPlayerID: number;
+}
+
+// Player By Id
+export interface PlayerByIdResponse {
+    PlayerID: number;
+    SportsDataID: string;
+    Status: string;
+    TeamID: number;
+    Team: string;
+    Jersey: number;
+    PositionCategory: string;
+    Position: string;
+    FirstName: string;
+    LastName: string;
+    Height: number;
+    Weight: number;
+    BirthDate: Date;
+    BirthCity: string;
+    BirthState: string;
+    BirthCountry?: any;
+    HighSchool?: any;
+    College?: any;
+    Salary: number;
+    PhotoUrl: string;
+    Experience: number;
+    SportRadarPlayerID: string;
+    RotoworldPlayerID: number;
+    RotoWirePlayerID: number;
+    FantasyAlarmPlayerID: number;
+    StatsPlayerID: number;
+    SportsDirectPlayerID: number;
+    XmlTeamPlayerID: number;
+    InjuryStatus: string;
+    InjuryBodyPart: string;
+    InjuryStartDate?: any;
+    InjuryNotes: string;
+    FanDuelPlayerID: number;
+    DraftKingsPlayerID: number;
+    YahooPlayerID: number;
+    FanDuelName: string;
+    DraftKingsName: string;
+    YahooName: string;
+    DepthChartPosition: string;
+    DepthChartOrder: number;
+    GlobalTeamID: number;
+    FantasyDraftName: string;
+    FantasyDraftPlayerID: number;
+    UsaTodayPlayerID: number;
+    UsaTodayHeadshotUrl: string;
+    UsaTodayHeadshotNoBackgroundUrl: string;
+    UsaTodayHeadshotUpdated: Date;
+    UsaTodayHeadshotNoBackgroundUpdated: Date;
+    NbaDotComPlayerID: number;
+}
+
+// Nba Team Details
+
+export interface TeamDetailResponse {
     id: number;
     abbreviation: string;
     city: string;
@@ -39,168 +145,122 @@ export interface TeamsResponse {
     name: string;
 }
 
-// export interface Meta {
-//     total_pages: number;
-//     current_page: number;
-//     next_page?: any;
-//     per_page: number;
-//     total_count: number;
-// }
-
-// export interface TeamsResponse {
-//     teams: Datum[];
-//     meta: Meta;
-// }
-
-// All Nba Players
-
-export interface Internal {
-    pubDateTime: string;
-    xslt: string;
-    eventName: string;
-}
-
-export interface Team {
-    teamId: string;
-    seasonStart: string;
-    seasonEnd: string;
-}
-
-export interface Draft {
-    teamId: string;
-    pickNum: string;
-    roundNum: string;
-    seasonYear: string;
-}
-
-export interface Standard {
-    firstName: string;
-    lastName: string;
-    personId: string;
-    teamId: string;
-    jersey: string;
-    isActive: boolean;
-    pos: string;
-    heightFeet: string;
-    heightInches: string;
-    heightMeters: string;
-    weightPounds: string;
-    weightKilograms: string;
-    dateOfBirthUTC: string;
-    teams: Team[];
-    draft: Draft;
-    nbaDebutYear: string;
-    yearsPro: string;
-    collegeName: string;
-    lastAffiliation: string;
-    country: string;
-}
-
-export interface League {
-    standard: Standard[];
-}
+// Nba Players
 
 export interface PlayerResponse {
-    _internal: Internal;
-    league: League;
-}
-
-// Nba Team Details
-
-export interface Detail {
-    Team_Id: number;
-    Abbreviation: string;
-    Nickname: string;
-    YearFounded: number;
-    YearActiveTill: string;
-    City: string;
-    Arena: string;
-    ArenaCapacity: string;
-    Owner: string;
-    GeneralManager: string;
-    HeadCoach: string;
-    DLeagueAffiliation: string;
-}
-
-export interface History {
-    Team_Id: number;
-    City: string;
-    Nickname: string;
-    YearFounded: number;
-    YearActiveTill: number;
-}
-
-export interface SocialSite {
-    AccountType: string;
-    WebSite_Link: string;
-}
-
-export interface Championship {
-    YearAwarded: number;
-    OppositeTeam: string;
-}
-
-export interface ConferenceTitle {
-    YearAwarded: number;
-    OppositeTeam?: any;
-}
-
-export interface DivitionalTitle {
-    YearAwarded: number;
-    OppositeTeam?: any;
-}
-
-export interface Award {
-    Championships: Championship[];
-    ConferenceTitles: ConferenceTitle[];
-    DivitionalTitles: DivitionalTitle[];
-}
-
-export interface HallOfFameInductee {
     PlayerID: number;
-    Player: string;
+    SportsDataID: string;
+    Status: string;
+    TeamID: number;
+    Team: string;
+    Jersey: number;
+    PositionCategory: string;
     Position: string;
-    Jersey?: any;
-    SeasonsWithTeam: string;
-    Year: number;
+    FirstName: string;
+    LastName: string;
+    Height: number;
+    Weight: number;
+    BirthDate: Date;
+    BirthCity: string;
+    BirthState: string;
+    BirthCountry?: any;
+    HighSchool?: any;
+    College?: any;
+    Salary: number;
+    PhotoUrl: string;
+    Experience: number;
+    SportRadarPlayerID: string;
+    RotoworldPlayerID: number;
+    RotoWirePlayerID: number;
+    FantasyAlarmPlayerID: number;
+    StatsPlayerID: number;
+    SportsDirectPlayerID: number;
+    XmlTeamPlayerID: number;
+    InjuryStatus: string;
+    InjuryBodyPart: string;
+    InjuryStartDate?: any;
+    InjuryNotes: string;
+    FanDuelPlayerID: number;
+    DraftKingsPlayerID: number;
+    YahooPlayerID: number;
+    FanDuelName: string;
+    DraftKingsName: string;
+    YahooName: string;
+    DepthChartPosition: string;
+    DepthChartOrder: number;
+    GlobalTeamID: number;
+    FantasyDraftName: string;
+    FantasyDraftPlayerID: number;
+    UsaTodayPlayerID: number;
+    UsaTodayHeadshotUrl: string;
+    UsaTodayHeadshotNoBackgroundUrl: string;
+    UsaTodayHeadshotUpdated: Date;
+    UsaTodayHeadshotNoBackgroundUpdated: Date;
+    NbaDotComPlayerID: number;
 }
 
-export interface RetiredMember {
-    PlayerID?: number;
-    Player: string;
+// Player stats
+
+export interface PlayerStats {
+    PlayerID: number;
+    SportsDataID: string;
+    Status: string;
+    TeamID: number;
+    Team: string;
+    Jersey: number;
+    PositionCategory: string;
     Position: string;
-    Jersey: string;
-    SeasonsWithTeam: string;
-    Year?: number;
+    FirstName: string;
+    LastName: string;
+    Height: number;
+    Weight: number;
+    BirthDate?: Date;
+    BirthCity: string;
+    BirthState: string;
+    BirthCountry?: any;
+    HighSchool?: any;
+    College: string;
+    Salary?: number;
+    PhotoUrl: string;
+    Experience: number;
+    SportRadarPlayerID: string;
+    RotoworldPlayerID?: number;
+    RotoWirePlayerID: number;
+    FantasyAlarmPlayerID: number;
+    StatsPlayerID: number;
+    SportsDirectPlayerID: number;
+    XmlTeamPlayerID?: number;
+    InjuryStatus: string;
+    InjuryBodyPart: string;
+    InjuryStartDate?: any;
+    InjuryNotes: string;
+    FanDuelPlayerID: number;
+    DraftKingsPlayerID: number;
+    YahooPlayerID: number;
+    FanDuelName: string;
+    DraftKingsName: string;
+    YahooName: string;
+    DepthChartPosition: string;
+    DepthChartOrder?: number;
+    GlobalTeamID: number;
+    FantasyDraftName: string;
+    FantasyDraftPlayerID: number;
+    UsaTodayPlayerID: number;
+    UsaTodayHeadshotUrl: string;
+    UsaTodayHeadshotNoBackgroundUrl: string;
+    UsaTodayHeadshotUpdated: Date;
+    UsaTodayHeadshotNoBackgroundUpdated: Date;
+    NbaDotComPlayerID: number;
 }
 
-export interface TeamDetail {
-    Details: Detail[];
-    History: History[];
-    SocialSites: SocialSite[];
-    Awards: Award[];
-    HallOfFameInductees: HallOfFameInductee[];
-    RetiredMembers: RetiredMember[];
-}
-
-export interface TeamDetailResponse {
-    TeamDetails: TeamDetail[];
-}
-
-// Player Bio
-
-export interface Bio {
-    id: string;
-    type: string;
-    display_name: string;
-    professional: string;
-    college: string;
-    highschool: string;
-    twitter: string;
-    other_label: string;
-    other_text: string;
-}
-
-export interface BioResponse {
-    Bio: Bio;
+// Season
+export interface Season {
+    Season: number;
+    StartYear: number;
+    EndYear: number;
+    Description: string;
+    RegularSeasonStartDate: Date;
+    PostSeasonStartDate: Date;
+    SeasonType: string;
+    ApiSeason: string;
 }
